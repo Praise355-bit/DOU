@@ -3,1777 +3,1080 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dou Restaurant & Lounge — Elevated Dining, Abuja</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <title>Dou Restaurant & Lounge | Fine Dining & Cocktail Bar</title>
+    <meta name="description" content="Experience world-class culinary artistry and handcrafted cocktails at Dou Restaurant & Lounge." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* ===== RESET & VARIABLES ===== */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ===== CSS VARIABLES & RESET ===== */
+        :root {
+            --bg-dark: #0d0d0d;
+            --bg-card: #161616;
+            --bg-card-hover: #1f1f1f;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-light: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --border-color: rgba(212, 175, 55, 0.2);
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        :root {
-            --bg: #0C0C0C;
-            --surface: #161412;
-            --surface-2: #1C1916;
-            --gold: #C9A227;
-            --gold-soft: #9C7F26;
-            --wine: #6E1E3C;
-            --ivory: #F4EEDD;
-            --muted: #9A9186;
-            --hair: #2C2822;
-            --serif: 'Fraunces', serif;
-            --sans: 'Work Sans', sans-serif;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-            --radius: 2px;
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
         }
 
         body {
-            background: var(--bg);
-            color: var(--ivory);
-            font-family: var(--sans);
-            font-weight: 300;
-            line-height: 1.7;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
         a {
             color: inherit;
             text-decoration: none;
+            transition: var(--transition);
         }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: none;
+            font-family: inherit;
+        }
+
         img {
-            display: block;
             max-width: 100%;
-        }
-        ::selection {
-            background: var(--gold);
-            color: #14100D;
+            display: block;
+            object-fit: cover;
         }
 
-        /* ===== PRELOADER ===== */
-        #preloader {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: var(--bg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+        /* ===== UI COMPONENTS & UTILITIES ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
-        #preloader.hide {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+
+        .section-padding {
+            padding: 6rem 0;
         }
-        .loader-ring {
-            width: 56px;
-            height: 56px;
-            border: 2px solid var(--hair);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 0.9s linear infinite;
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
-        .loader-text {
-            margin-top: 1.2rem;
-            font-family: var(--serif);
+
+        .section-subtitle {
+            color: var(--gold-primary);
             font-size: 0.9rem;
-            color: var(--muted);
-            letter-spacing: 3px;
             text-transform: uppercase;
-        }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            display: block;
         }
 
-        /* ===== SCROLL PROGRESS ===== */
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .btn-gold {
+            background-color: var(--gold-primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold-primary);
+            color: var(--bg-dark);
+        }
+
+        /* Progress Bar */
         #scroll-progress {
             position: fixed;
             top: 0;
             left: 0;
             height: 3px;
-            background: var(--gold);
+            background: var(--gold-primary);
             z-index: 1001;
             width: 0%;
-            transition: width 0.1s;
         }
 
-        /* ===== HEADER ===== */
-        header {
+        /* Preloader */
+        #preloader {
             position: fixed;
             top: 0;
-            width: 100%;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 6%;
-            background: rgba(12, 12, 12, 0.88);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--hair);
-            transition: background var(--transition), padding var(--transition);
-        }
-        header.scrolled {
-            background: rgba(12, 12, 12, 0.96);
-            padding: 0.7rem 6%;
-        }
-
-        .logo {
-            font-family: var(--serif);
-            font-size: 1.4rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            color: var(--ivory);
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        .logo span {
-            color: var(--gold);
-        }
-        .logo small {
-            font-size: 0.65rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            color: var(--muted);
-            font-family: var(--sans);
-            margin-left: 0.3rem;
-        }
-
-        /* desktop nav */
-        nav.desktop {
-            display: flex;
-            gap: 2.2rem;
-            align-items: center;
-        }
-        nav.desktop a {
-            font-size: 0.92rem;
-            color: var(--muted);
-            position: relative;
-            padding-bottom: 4px;
-            transition: color 0.25s;
-        }
-        nav.desktop a::after {
-            content: '';
-            position: absolute;
             left: 0;
-            bottom: 0;
-            width: 0%;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.3s ease;
-        }
-        nav.desktop a:hover {
-            color: var(--ivory);
-        }
-        nav.desktop a:hover::after {
             width: 100%;
-        }
-        nav.desktop a:focus-visible {
-            outline: 1px solid var(--gold);
-            outline-offset: 3px;
-        }
-
-        /* hamburger */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px;
-            z-index: 1001;
-        }
-        .hamburger span {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background: var(--ivory);
-            transition: var(--transition);
-            transform-origin: center;
-        }
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* mobile nav */
-        .mobile-nav {
-            position: fixed;
-            inset: 0;
-            z-index: 999;
-            background: rgba(12, 12, 12, 0.97);
-            backdrop-filter: blur(12px);
+            height: 100%;
+            background: var(--bg-dark);
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            gap: 2rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-        .mobile-nav.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .mobile-nav a {
-            font-family: var(--serif);
-            font-size: 1.8rem;
-            color: var(--muted);
-            transition: color 0.25s;
-        }
-        .mobile-nav a:hover {
-            color: var(--ivory);
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 94vh;
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
             align-items: center;
-            padding: 8rem 6% 4rem;
-            gap: 3rem;
-            background: linear-gradient(100deg, rgba(12, 12, 12, 0.92) 30%, rgba(12, 12, 12, 0.4) 100%),
-                url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80') right center/cover no-repeat;
-            position: relative;
-        }
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 120px;
-            background: linear-gradient(to top, var(--bg), transparent);
-            pointer-events: none;
+            z-index: 2000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
-        .hero-eyebrow {
-            font-family: var(--serif);
-            font-style: italic;
-            font-size: 1.05rem;
-            color: var(--gold);
-            margin-bottom: 1.1rem;
+        #preloader.hide {
             opacity: 0;
-            animation: fadeUp 0.8s 0.2s forwards;
-        }
-        .hero h1 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: clamp(2.6rem, 5vw, 4.4rem);
-            line-height: 1.05;
-            max-width: 11ch;
-            color: var(--ivory);
-            opacity: 0;
-            animation: fadeUp 0.8s 0.35s forwards;
-        }
-        .hero-rule {
-            width: 64px;
-            height: 1px;
-            background: var(--gold);
-            margin: 1.8rem 0;
-            position: relative;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.5s forwards;
-        }
-        .hero-rule::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 6px;
-            height: 6px;
-            background: var(--gold);
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        .hero p {
-            max-width: 42ch;
-            color: var(--muted);
-            font-size: 1.02rem;
-            margin-bottom: 2.2rem;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.65s forwards;
-        }
-        .hero .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.8s forwards;
-        }
-        .btn {
-            display: inline-block;
-            border: 1px solid var(--gold);
-            color: var(--ivory);
-            background: transparent;
-            padding: 0.85rem 2.2rem;
-            font-size: 0.92rem;
-            letter-spacing: 0.3px;
-            transition: background 0.3s, color 0.3s, transform 0.2s;
-            cursor: pointer;
-            font-family: var(--sans);
-            font-weight: 400;
-            text-align: center;
-        }
-        .btn:hover {
-            background: var(--gold);
-            color: #14100D;
-            transform: translateY(-2px);
-        }
-        .btn-gold {
-            background: var(--gold);
-            color: #14100D;
-            border-color: var(--gold);
-        }
-        .btn-gold:hover {
-            background: transparent;
-            color: var(--ivory);
-        }
-        .btn-outline {
-            border-color: var(--hair);
-        }
-        .btn-outline:hover {
-            border-color: var(--gold);
-            background: transparent;
-            color: var(--ivory);
+            visibility: hidden;
         }
 
-        .hero-meta {
-            align-self: end;
-            border-left: 1px solid var(--hair);
-            padding-left: 2rem;
-            color: var(--muted);
-            font-size: 0.88rem;
-            opacity: 0;
-            animation: fadeUp 0.8s 0.9s forwards;
-        }
-        .hero-meta p {
-            margin-bottom: 0.5rem;
-        }
-        .hero-meta strong {
-            display: block;
-            color: var(--ivory);
-            font-family: var(--serif);
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin-bottom: 0.3rem;
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top-color: var(--gold-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        /* ===== SECTION SHELL ===== */
-        section {
-            padding: 6rem 6%;
-            position: relative;
-        }
-        .section-head {
-            max-width: 640px;
-            margin: 0 auto 3.5rem;
-            text-align: center;
-        }
-        .section-head h2 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: clamp(2rem, 3.4vw, 2.8rem);
-            color: var(--ivory);
-            margin-bottom: 0.8rem;
-        }
-        .section-head p {
-            color: var(--muted);
-            font-size: 0.98rem;
-        }
-        .section-head .hero-rule {
-            margin: 1.2rem auto;
-        }
-
+        /* Reveal Animation Class */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
+
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* ===== STATS ===== */
-        #stats {
-            background: var(--surface);
-            border-top: 1px solid var(--hair);
-            border-bottom: 1px solid var(--hair);
-            padding: 4rem 6%;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .stat-number {
-            font-family: var(--serif);
-            font-size: clamp(2.4rem, 4vw, 3.6rem);
-            font-weight: 400;
-            color: var(--gold);
-            line-height: 1.1;
-        }
-        .stat-label {
-            color: var(--muted);
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-top: 0.3rem;
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
         }
 
-        /* ===== FEATURED / SPECIALS ===== */
-        #specials {
-            background: var(--bg);
-        }
-        .specials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .special-card {
-            background: var(--surface);
-            border: 1px solid var(--hair);
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: border-color 0.3s, transform 0.3s;
-            cursor: default;
-        }
-        .special-card:hover {
-            border-color: var(--gold-soft);
-            transform: translateY(-6px);
-        }
-        .special-card .icon {
-            font-size: 2.4rem;
-            margin-bottom: 0.8rem;
-        }
-        .special-card h3 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: 1.2rem;
-            color: var(--ivory);
-        }
-        .special-card p {
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+        header.scrolled {
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        /* ===== MENU ===== */
-        #menu {
-            background: var(--surface);
-            border-top: 1px solid var(--hair);
-            border-bottom: 1px solid var(--hair);
-        }
-
-        .menu-toolbar {
+        .nav-container {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            max-width: 920px;
-            margin: 0 auto 2.5rem;
-        }
-        .menu-search {
-            flex: 1;
-            min-width: 180px;
-            background: var(--bg);
-            border: 1px solid var(--hair);
-            padding: 0.6rem 1rem;
-            color: var(--ivory);
-            font-family: var(--sans);
-            font-size: 0.9rem;
-            transition: border-color 0.3s;
-        }
-        .menu-search:focus {
-            outline: none;
-            border-color: var(--gold-soft);
-        }
-        .menu-search::placeholder {
-            color: var(--muted);
         }
 
-        .tabs {
-            display: flex;
-            gap: 2.4rem;
-            flex-wrap: wrap;
-            border-bottom: 1px solid var(--hair);
-            padding-bottom: 0;
-            max-width: 920px;
-            margin: 0 auto 2.5rem;
-            justify-content: center;
-        }
-        .tab {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: var(--sans);
-            color: var(--muted);
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-            padding: 0 0 1rem;
-            position: relative;
-            transition: color 0.25s;
-            font-weight: 400;
-        }
-        .tab::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -1px;
-            height: 1px;
-            background: var(--gold);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .tab:hover {
-            color: var(--ivory);
-        }
-        .tab.active {
-            color: var(--ivory);
-        }
-        .tab.active::after {
-            transform: scaleX(1);
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-light);
         }
 
-        .menu-panel {
-            display: none;
-            max-width: 920px;
-            margin: 0 auto;
+        .logo span {
+            color: var(--gold-primary);
         }
-        .menu-panel.active {
-            display: block;
-        }
-        .menu-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0 4rem;
-        }
-        .menu-item {
-            padding: 1.15rem 0;
-            border-bottom: 1px solid var(--hair);
-            transition: background 0.2s;
-        }
-        .menu-item:last-child {
-            border-bottom: none;
-        }
-        .menu-item-top {
+
+        .nav-links {
             display: flex;
-            align-items: baseline;
-            gap: 0.7rem;
+            gap: 2.5rem;
+            list-style: none;
         }
-        .add-btn {
-            flex-shrink: 0;
-            background: none;
-            border: 1px solid var(--gold-soft);
-            color: var(--gold);
-            font-family: var(--sans);
-            font-size: 0.72rem;
-            letter-spacing: 0.4px;
-            padding: 0.3rem 0.7rem;
-            cursor: pointer;
-            transition: background 0.25s, color 0.25s, border-color 0.25s;
-        }
-        .add-btn:hover {
-            background: var(--gold);
-            color: #0C0C0C;
-            border-color: var(--gold);
-        }
-        .add-btn.added {
-            background: var(--gold);
-            color: #0C0C0C;
-            border-color: var(--gold);
-        }
-        .menu-item-name {
-            font-family: var(--serif);
-            font-size: 1.08rem;
-            font-weight: 400;
-            color: var(--ivory);
-            white-space: nowrap;
-        }
-        .leader {
-            flex: 1;
-            margin: 0 0.6em;
-            border-bottom: 1px dotted var(--hair);
-            position: relative;
-            top: -5px;
-        }
-        .menu-item-price {
-            font-family: var(--sans);
-            font-size: 0.95rem;
-            color: var(--gold);
-            white-space: nowrap;
-        }
-        .menu-item-desc {
-            color: var(--muted);
+
+        .nav-links a {
             font-size: 0.85rem;
-            margin-top: 0.35rem;
-            max-width: 46ch;
-        }
-        .menu-no-results {
-            text-align: center;
-            color: var(--muted);
-            padding: 2rem 0;
-            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
         }
 
-        /* ===== TESTIMONIALS ===== */
-        #testimonials {
-            background: var(--surface-2);
-            border-top: 1px solid var(--hair);
-            border-bottom: 1px solid var(--hair);
+        .nav-links a:hover {
+            color: var(--gold-primary);
         }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-light);
+            transition: var(--transition);
+        }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--bg-card);
+            z-index: 999;
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
             gap: 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
+            transition: var(--transition);
+            border-left: 1px solid var(--border-color);
         }
-        .testimonial-card {
-            background: var(--surface);
-            border: 1px solid var(--hair);
-            padding: 2rem 1.5rem;
-            border-radius: var(--radius);
-            transition: border-color 0.3s, transform 0.3s;
+
+        .mobile-nav.open {
+            right: 0;
         }
-        .testimonial-card:hover {
-            border-color: var(--gold-soft);
-            transform: translateY(-4px);
-        }
-        .testimonial-card .stars {
-            color: var(--gold);
+
+        .mobile-nav a {
             font-size: 1.1rem;
-            margin-bottom: 0.6rem;
+            text-transform: uppercase;
             letter-spacing: 2px;
         }
-        .testimonial-card blockquote {
-            font-style: italic;
-            color: var(--ivory);
-            font-size: 0.98rem;
-            line-height: 1.6;
-        }
-        .testimonial-card .author {
-            margin-top: 1rem;
-            font-family: var(--serif);
-            color: var(--gold-soft);
-            font-size: 0.95rem;
-        }
-        .testimonial-card .title {
-            color: var(--muted);
-            font-size: 0.8rem;
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(13, 13, 13, 0.6), rgba(13, 13, 13, 0.8)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
         }
 
-        /* ===== GALLERY ===== */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: 260px;
-            gap: 1.2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--hair);
-            cursor: pointer;
-            transition: transform 0.4s, border-color 0.3s;
-        }
-        .gallery-item:hover {
-            transform: scale(1.01);
-            border-color: var(--gold-soft);
-        }
-        .gallery-item.span-2 {
-            grid-column: span 2;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            filter: saturate(0.92) brightness(0.9);
-            transition: filter 0.4s, transform 0.5s;
-        }
-        .gallery-item:hover img {
-            filter: saturate(1) brightness(1);
-            transform: scale(1.03);
-        }
-        .gallery-item figcaption {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 0.9rem 1.1rem;
-            background: linear-gradient(to top, rgba(12, 12, 12, 0.92), transparent);
-            font-family: var(--serif);
-            font-style: italic;
-            font-size: 1rem;
-            color: var(--ivory);
+        .hero-content {
+            max-width: 800px;
         }
 
-        /* ===== ABOUT ===== */
-        .about {
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* ===== ABOUT & STATS ===== */
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .about-img-wrap {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--hair);
-        }
-        .about-img-wrap img {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            filter: saturate(0.9);
-            transition: transform 0.6s, filter 0.6s;
-        }
-        .about-img-wrap:hover img {
-            transform: scale(1.03);
-            filter: saturate(1);
-        }
-        .about h2 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: clamp(1.8rem, 3vw, 2.4rem);
-            margin-bottom: 1.2rem;
-        }
-        .about p {
-            color: var(--muted);
-            margin-bottom: 1rem;
-            max-width: 44ch;
         }
 
-        /* ===== RESERVATION MODAL ===== */
-        .modal-overlay {
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stat-item h3 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--gold-primary);
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        /* ===== MENU SECTION ===== */
+        .menu-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-tabs {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .tab.active, .tab:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold-primary);
+        }
+
+        .menu-panel {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-panel.active {
+            display: grid;
+        }
+
+        .menu-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-name {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .menu-item-price {
+            color: var(--gold-primary);
+            font-weight: 600;
+        }
+
+        .menu-item-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .add-btn {
+            align-self: flex-start;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            transition: var(--transition);
+        }
+
+        .add-btn:hover, .add-btn.added {
+            background: var(--gold-primary);
+            color: var(--bg-dark);
+        }
+
+        .menu-no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: var(--text-muted);
+            padding: 3rem 0;
+        }
+
+        /* ===== CART DRAWER ===== */
+        #cart-toggle {
             position: fixed;
-            inset: 0;
-            z-index: 2000;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(6px);
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--gold-primary);
+            color: var(--bg-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--bg-card);
+            z-index: 1001;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            border-left: 1px solid var(--border-color);
+        }
+
+        #cart-drawer.open {
+            right: 0;
+        }
+
+        #cart-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: none;
+        }
+
+        #cart-backdrop.open {
+            display: block;
+        }
+
+        .cart-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .cart-head h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+        }
+
+        #cart-close {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        #cart-list {
+            list-style: none;
+            overflow-y: auto;
+            flex-grow: 1;
+            margin-bottom: 2rem;
+        }
+
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .cart-row-name {
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .cart-row-price {
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            margin: 0 1rem;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .qty-controls button {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            padding: 1.5rem;
+            border-radius: 2px;
         }
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
+
+        .cart-row-remove {
+            color: #ff4d4d;
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
         }
-        .modal {
-            background: var(--surface);
-            border: 1px solid var(--hair);
-            max-width: 560px;
-            width: 100%;
-            padding: 2.5rem 2rem;
-            position: relative;
-            transform: translateY(30px);
-            transition: transform 0.4s ease;
-        }
-        .modal-overlay.open .modal {
-            transform: translateY(0);
-        }
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.2rem;
-            background: none;
-            border: none;
-            color: var(--muted);
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: color 0.3s;
-            line-height: 1;
-        }
-        .modal-close:hover {
-            color: var(--ivory);
-        }
-        .modal h2 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: 1.8rem;
-            margin-bottom: 0.4rem;
-        }
-        .modal p {
-            color: var(--muted);
-            font-size: 0.92rem;
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
+
+        .cart-clear {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            text-decoration: underline;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* ===== MODAL RESERVATION ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            z-index: 1002;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 4px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+        }
+
+        .modal h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
         .form-group {
             margin-bottom: 1.2rem;
         }
+
         .form-group label {
             display: block;
             font-size: 0.8rem;
-            color: var(--muted);
-            letter-spacing: 0.5px;
             text-transform: uppercase;
-            margin-bottom: 0.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+            color: var(--text-light);
         }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            background: var(--bg);
-            border: 1px solid var(--hair);
-            padding: 0.7rem 1rem;
-            color: var(--ivory);
-            font-family: var(--sans);
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+            padding: 0.8rem;
+            background: #0d0d0d;
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 2px;
+            font-family: inherit;
             outline: none;
-            border-color: var(--gold-soft);
         }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--gold-primary);
         }
+
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
 
-        /* ===== NEWSLETTER ===== */
-        #newsletter {
-            background: var(--surface);
-            border-bottom: 1px solid var(--hair);
-            text-align: center;
-            padding: 4rem 6%;
-        }
-        .newsletter-wrap {
-            max-width: 560px;
-            margin: 0 auto;
-        }
-        .newsletter-wrap h2 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: 1.8rem;
-            color: var(--ivory);
-        }
-        .newsletter-wrap p {
-            color: var(--muted);
-            margin: 0.5rem 0 1.5rem;
-        }
-        .newsletter-form {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .newsletter-form input {
-            flex: 1;
-            min-width: 180px;
-            background: var(--bg);
-            border: 1px solid var(--hair);
-            padding: 0.7rem 1rem;
-            color: var(--ivory);
-            font-family: var(--sans);
-            font-size: 0.9rem;
-            transition: border-color 0.3s;
-        }
-        .newsletter-form input:focus {
-            outline: none;
-            border-color: var(--gold-soft);
-        }
-        .newsletter-form .btn {
-            flex-shrink: 0;
-        }
-
         /* ===== FOOTER ===== */
         footer {
-            background: var(--surface-2);
-            padding: 5rem 6% 2rem;
-            border-top: 1px solid var(--hair);
+            background: #050505;
+            padding: 4rem 0 2rem 0;
+            border-top: 1px solid var(--border-color);
         }
+
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.3fr 1fr 1fr 1fr;
-            gap: 3rem;
-            max-width: 1100px;
-            margin: 0 auto 3rem;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
         }
-        .footer-grid h3 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            max-width: 300px;
         }
-        .footer-grid h3 span {
-            color: var(--gold);
-        }
-        .footer-grid p {
-            color: var(--muted);
-            font-size: 0.92rem;
-            margin-bottom: 0.5rem;
-        }
+
         .footer-col h4 {
-            font-size: 0.85rem;
-            color: var(--gold-soft);
-            font-weight: 500;
-            margin-bottom: 0.9rem;
-            letter-spacing: 0.3px;
-        }
-        .footer-col .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.6rem;
-        }
-        .footer-col .social-links a {
-            color: var(--muted);
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-        .footer-col .social-links a:hover {
-            color: var(--gold);
-        }
-        .phone-link {
-            color: var(--gold);
-            font-family: var(--serif);
+            font-family: var(--font-heading);
             font-size: 1.3rem;
-        }
-        .footer-bottom {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid var(--hair);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            color: #6b6154;
-            font-size: 0.78rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold-primary);
         }
 
-        /* ===== BACK TO TOP ===== */
-        #back-top {
-            position: fixed;
-            bottom: 5.5rem;
-            right: 1.6rem;
-            z-index: 900;
-            background: var(--gold);
-            color: #0C0C0C;
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s, transform 0.3s;
-            box-shadow: 0 4px 16px rgba(201, 162, 39, 0.3);
-        }
-        #back-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        #back-top:hover {
-            transform: translateY(-4px);
-        }
-
-        /* ===== CART ===== */
-        #cart-toggle {
-            position: fixed;
-            right: 1.6rem;
-            bottom: 1.6rem;
-            z-index: 1200;
-            background: var(--gold);
-            color: #0C0C0C;
-            border: none;
-            font-family: var(--sans);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            padding: 0.85rem 1.3rem;
-            cursor: pointer;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-            transition: transform 0.25s, box-shadow 0.25s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        #cart-toggle:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 28px rgba(201, 162, 39, 0.25);
-        }
-        #cart-count {
-            display: inline-block;
-            min-width: 1.1rem;
-            font-weight: 600;
-        }
-
-        #cart-backdrop {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            z-index: 1300;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        #cart-backdrop.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        #cart-drawer {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: min(400px, 92vw);
-            background: var(--surface);
-            border-left: 1px solid var(--hair);
-            z-index: 1400;
-            padding: 2rem 1.6rem;
-            display: flex;
-            flex-direction: column;
-            transform: translateX(100%);
-            transition: transform 0.35s ease;
-        }
-        #cart-drawer.open {
-            transform: translateX(0);
-        }
-        .cart-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.4rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--hair);
-        }
-        .cart-head h3 {
-            font-family: var(--serif);
-            font-weight: 400;
-            font-size: 1.4rem;
-            color: var(--ivory);
-        }
-        #cart-close {
-            background: none;
-            border: none;
-            color: var(--muted);
-            font-size: 1.6rem;
-            line-height: 1;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        #cart-close:hover {
-            color: var(--ivory);
-        }
-        #cart-empty {
-            color: var(--muted);
-            font-size: 0.92rem;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        #cart-list {
+        .footer-col ul {
             list-style: none;
-            overflow-y: auto;
-            flex: 1;
-            padding-right: 0.2rem;
-        }
-        #cart-list::-webkit-scrollbar {
-            width: 4px;
-        }
-        #cart-list::-webkit-scrollbar-track {
-            background: var(--hair);
-        }
-        #cart-list::-webkit-scrollbar-thumb {
-            background: var(--gold-soft);
         }
 
-        .cart-row {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.9rem 0;
-            border-bottom: 1px solid var(--hair);
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
         }
-        .cart-row-name {
-            font-family: var(--serif);
-            font-size: 1rem;
-            color: var(--ivory);
-            flex: 1;
-        }
-        .cart-row-price {
-            color: var(--gold);
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        .qty-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .qty-controls button {
-            width: 26px;
-            height: 26px;
-            background: none;
-            border: 1px solid var(--hair);
-            color: var(--ivory);
-            cursor: pointer;
-            font-size: 0.9rem;
-            line-height: 1;
-            transition: border-color 0.3s, color 0.3s;
-            border-radius: 2px;
-        }
-        .qty-controls button:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-        .qty-controls span {
-            min-width: 1.2rem;
-            text-align: center;
+
+        .footer-col ul li a {
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
-        .cart-row-remove {
-            background: none;
-            border: none;
-            color: var(--muted);
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            padding: 0 0.2rem;
-        }
-        .cart-row-remove:hover {
-            color: #c0392b;
+
+        .footer-col ul li a:hover {
+            color: var(--text-light);
         }
 
-        .cart-total-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 1.1rem 0;
-            border-top: 1px solid var(--hair);
-            font-family: var(--serif);
-            font-size: 1.15rem;
-            color: var(--ivory);
-        }
-        #cart-total {
-            color: var(--gold);
-        }
-        #cart-drawer .btn {
+        .footer-bottom {
             text-align: center;
-            width: 100%;
-            margin-top: 0.6rem;
-        }
-        .cart-clear {
-            background: none;
-            border: none;
-            color: var(--muted);
-            font-size: 0.78rem;
-            cursor: pointer;
-            transition: color 0.3s;
-            padding: 0.4rem 0;
-            text-align: right;
-        }
-        .cart-clear:hover {
-            color: #c0392b;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.8rem;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        .back-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--gold-primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 900;
         }
 
-        @media (max-width: 860px) {
-            nav.desktop {
-                display: none;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 7.5rem;
-                text-align: left;
-            }
-            .hero-meta {
-                border-left: none;
-                padding-left: 0;
-                border-top: 1px solid var(--hair);
-                padding-top: 1.5rem;
-            }
-            .menu-columns {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-            .about {
-                grid-template-columns: 1fr;
-            }
-            .about-img-wrap img {
-                height: 280px;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .tabs {
-                gap: 1.2rem 1.6rem;
-            }
-            .gallery-grid {
-                grid-template-columns: 1fr 1fr;
-                grid-auto-rows: 200px;
-            }
-            .gallery-item.span-2 {
-                grid-column: span 2;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            #cart-toggle {
-                right: 1rem;
-                bottom: 1rem;
-                padding: 0.7rem 1rem;
-                font-size: 0.8rem;
-            }
-            #back-top {
-                right: 1rem;
-                bottom: 5rem;
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
-            }
+        .back-top.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
-        @media (max-width: 560px) {
-            section {
-                padding: 4rem 5%;
-            }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .gallery-item.span-2 {
-                grid-column: span 1;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .hero .btn-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .special-card {
-                padding: 1.5rem 1rem;
-            }
-            .testimonial-card {
-                padding: 1.5rem 1rem;
-            }
-            .modal {
-                padding: 2rem 1.2rem;
-            }
-            #cart-drawer {
-                width: 100vw;
-                padding: 1.5rem 1rem;
-            }
+        /* ===== RESPONSIVE MEDIA QUERIES ===== */
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
         }
 
-        @media (max-width: 400px) {
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
-            }
-            .stat-number {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* ===== REDUCED MOTION ===== */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .reveal {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-            .hero-eyebrow,
-            .hero h1,
-            .hero-rule,
-            .hero p,
-            .hero .btn-group,
-            .hero-meta {
-                opacity: 1 !important;
-                animation: none !important;
-            }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .form-row { grid-template-columns: 1fr; }
+            .modal { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== PRELOADER ===== -->
-    <div id="preloader" role="status" aria-label="Loading">
-        <div class="loader-ring"></div>
-        <div class="loader-text">Dou</div>
+    <!-- Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
     </div>
 
-    <!-- ===== SCROLL PROGRESS ===== -->
-    <div id="scroll-progress" role="progressbar" aria-label="Scroll progress"></div>
-
-    <!-- ===== HEADER ===== -->
-    <header role="banner">
-        <div class="logo">
-            DOU <span>&amp;</span> LOUNGE
-            <small>Abuja</small>
+    <!-- ===== HEADER & NAVBAR ===== -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">DOU<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#reserve" class="btn btn-outline" style="display: none; @media(min-width: 769px){display: inline-block;}">Book Table</a>
+            <div class="hamburger" id="hamburger" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <nav class="desktop" aria-label="Main navigation">
-            <a href="#home">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
     </header>
 
-    <!-- ===== MOBILE NAV ===== -->
-    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#about">About</a>
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#about">About Us</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#experience">The Experience</a>
         <a href="#contact">Contact</a>
-        <a href="#reserve" class="btn btn-gold" id="mobileReserveBtn" style="margin-top:0.5rem;">Reserve a Table</a>
+        <a href="#reserve" class="btn btn-gold" id="mobileReserveBtn">Reserve Table</a>
     </nav>
 
-    <!-- ===== HERO ===== -->
-    <section id="home" class="hero">
-        <div>
-            <p class="hero-eyebrow">Wuse 2, Abuja</p>
-            <h1>A table set the way courts once dined.</h1>
-            <div class="hero-rule"></div>
-            <p>Continental and West African plates built on the same table, a lounge poured for slow evenings, and a room dressed in velvet and gold that asks you to stay a little longer.</p>
-            <div class="btn-group">
-                <a href="#reserve" class="btn btn-gold" id="heroReserveBtn">Reserve a Table</a>
-                <a href="#menu" class="btn btn-outline">Explore Menu</a>
-            </div>
-        </div>
-        <div class="hero-meta">
-            <strong>Open Daily</strong>
-            <p>12:00 PM &ndash; 11:30 PM</p>
-            <p style="margin-top:1rem;">Kitchen last orders 10:45 PM</p>
-            <p>Lounge until midnight, Fri &ndash; Sat</p>
-        </div>
-    </section>
-
-    <!-- ===== STATS ===== -->
-    <section id="stats" aria-label="Restaurant stats">
-        <div class="stats-grid reveal">
-            <div>
-                <div class="stat-number" data-count="12">0</div>
-                <div class="stat-label">Years of Flavour</div>
-            </div>
-            <div>
-                <div class="stat-number" data-count="48">0</div>
-                <div class="stat-label">Dishes on Menu</div>
-            </div>
-            <div>
-                <div class="stat-number" data-count="280">0</div>
-                <div class="stat-label">Seats Available</div>
-            </div>
-            <div>
-                <div class="stat-number" data-count="4.2">0</div>
-                <div class="stat-label">★ Rating</div>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="section-subtitle">Exquisite Fine Dining</span>
+            <h1>Where Culinary Art Meets Modern Sophistication</h1>
+            <p>Immerse yourself in a journey of elevated flavours, handcrafted cocktails, and an ambient luxury space tailored for extraordinary evenings.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn btn-gold">Explore Menu</a>
+                <a href="#reserve" class="btn btn-outline" id="heroReserveBtn">Reserve Table</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== SPECIALS ===== -->
-    <section id="specials" aria-label="Chef's specials">
-        <div class="section-head reveal">
-            <h2>Chef's Signature</h2>
-            <div class="hero-rule"></div>
-            <p>Four plates that define our kitchen — each one a story of patience and fire.</p>
-        </div>
-        <div class="specials-grid">
-            <div class="special-card reveal">
-                <div class="icon">🥩</div>
-                <h3>Continental Steak</h3>
-                <p>Aged beef, red wine jus, herb mash — a classic done right.</p>
-            </div>
-            <div class="special-card reveal">
-                <div class="icon">🦐</div>
-                <h3>Grilled Seafood Platter</h3>
-                <p>Prawns, calamari, fish fillet with garlic butter and lemon.</p>
-            </div>
-            <div class="special-card reveal">
-                <div class="icon">🍛</div>
-                <h3>Jollof Risotto</h3>
-                <p>West African soul meets Italian technique with grilled prawns.</p>
-            </div>
-            <div class="special-card reveal">
-                <div class="icon">🍫</div>
-                <h3>Chin Chin Crème Brûlée</h3>
-                <p>Our dessert — crispy chin chin meets silky custard.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== MENU ===== -->
-    <section id="menu" aria-label="Menu">
-        <div class="section-head reveal">
-            <h2>The Menu</h2>
-            <div class="hero-rule"></div>
-            <p>Four courses, worked over for years, served the way we'd want them ourselves.</p>
-        </div>
-
-        <div class="menu-toolbar reveal">
-            <input class="menu-search" id="menuSearch" type="text" placeholder="Search dishes…" aria-label="Search menu" />
-        </div>
-
-        <div class="tabs" role="tablist" aria-label="Menu categories">
-            <button class="tab active" data-tab="starters" role="tab" aria-selected="true">Starters</button>
-            <button class="tab" data-tab="mains" role="tab" aria-selected="false">Mains</button>
-            <button class="tab" data-tab="desserts" role="tab" aria-selected="false">Desserts</button>
-            <button class="tab" data-tab="drinks" role="tab" aria-selected="false">Cocktails &amp; Drinks</button>
-        </div>
-
-        <!-- panels -->
-        <div class="menu-panel active" id="starters" role="tabpanel">
-            <div class="menu-columns">
-                <div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Peppered Snails</span><span class="leader"></span><span class="menu-item-price">&#8358;8,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Sautéed in habanero butter and garlic.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Suya Skewers</span><span class="leader"></span><span class="menu-item-price">&#8358;7,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Spiced beef, charred onion, tomato.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Crab Cakes</span><span class="leader"></span><span class="menu-item-price">&#8358;9,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Old Bay aioli, pickled fennel.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Beef Samosa Trio</span><span class="leader"></span><span class="menu-item-price">&#8358;5,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Mint yoghurt, tamarind glaze.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Corn &amp; Coconut Shooter</span><span class="leader"></span><span class="menu-item-price">&#8358;4,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Chilled, grilled corn, coconut cream.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Chicken Pepper Soup</span><span class="leader"></span><span class="menu-item-price">&#8358;6,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Scotch bonnet broth, uziza leaf.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Tiger Prawns</span><span class="leader"></span><span class="menu-item-price">&#8358;12,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Chilli-lime glaze, coriander.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Smoked Fish Croquettes</span><span class="leader"></span><span class="menu-item-price">&#8358;7,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Scotch bonnet aioli.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Goat Meat Small Chops</span><span class="leader"></span><span class="menu-item-price">&#8358;11,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Sharing platter, pepper sauce.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Plantain &amp; Prawn Fritters</span><span class="leader"></span><span class="menu-item-price">&#8358;8,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Chilli jam.</p></div>
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid reveal">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Restaurant Ambiance" />
                 </div>
-                <div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Burrata &amp; Heirloom Tomato</span><span class="leader"></span><span class="menu-item-price">&#8358;9,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Basil oil, aged balsamic.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Oxtail Consommé</span><span class="leader"></span><span class="menu-item-price">&#8358;7,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Thyme, root vegetables.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Grilled Halloumi</span><span class="leader"></span><span class="menu-item-price">&#8358;6,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Wild honey, chilli flake.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Beef Tartare</span><span class="leader"></span><span class="menu-item-price">&#8358;10,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Capers, quail egg, crostini.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Efo Riro Bruschetta</span><span class="leader"></span><span class="menu-item-price">&#8358;6,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Grilled sourdough, smoked fish.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Duck Spring Rolls</span><span class="leader"></span><span class="menu-item-price">&#8358;8,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Hoisin glaze, spring onion.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Roasted Bone Marrow</span><span class="leader"></span><span class="menu-item-price">&#8358;9,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Herb gremolata, sea salt toast.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Chilled Gazpacho</span><span class="leader"></span><span class="menu-item-price">&#8358;5,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Heirloom tomato, olive oil.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Seared Scallops</span><span class="leader"></span><span class="menu-item-price">&#8358;13,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Cauliflower purée, brown butter.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Charcuterie &amp; Cheese Board</span><span class="leader"></span><span class="menu-item-price">&#8358;16,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Cured meats, local &amp; imported cheese.</p></div>
+                <div class="about-text">
+                    <span class="section-subtitle">Our Heritage</span>
+                    <h2 class="section-title" style="margin-bottom: 1.5rem;">A Sanctuary of Elegance</h2>
+                    <p>At Dou Restaurant & Lounge, every dish carries a narrative of passion, precision, and world-class craftsmanship. Our culinary team blends native techniques with modern international influences to offer an unmatched dining experience.</p>
+                    <p>Whether you join us for an intimate dinner, a high-level corporate engagement, or a vibrant late-night lounge experience, we promise an environment defined by luxury and warmth.</p>
+                    <a href="#experience" class="btn btn-outline" style="margin-top: 1rem;">Discover More</a>
                 </div>
             </div>
-        </div>
 
-        <div class="menu-panel" id="mains" role="tabpanel">
-            <div class="menu-columns">
-                <div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Continental Steak</span><span class="leader"></span><span class="menu-item-price">&#8358;22,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Aged beef, mash, red wine jus.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Grilled Seafood Platter</span><span class="leader"></span><span class="menu-item-price">&#8358;18,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Prawns, calamari, fish fillet, garlic butter.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Chef's Special Pasta</span><span class="leader"></span><span class="menu-item-price">&#8358;14,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Alfredo, herbs, chicken, parmesan.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Jollof Risotto</span><span class="leader"></span><span class="menu-item-price">&#8358;15,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Grilled prawns, smoked paprika oil.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Whole Grilled Tilapia</span><span class="leader"></span><span class="menu-item-price">&#8358;13,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Pepper sauce, fried plantain.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Braised Oxtail</span><span class="leader"></span><span class="menu-item-price">&#8358;16,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Root vegetable mash, red wine.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Lamb Chops</span><span class="leader"></span><span class="menu-item-price">&#8358;21,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Rosemary jus, roasted potato.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Duck Breast</span><span class="leader"></span><span class="menu-item-price">&#8358;19,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Orange glaze, wilted greens.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Beef Wellington</span><span class="leader"></span><span class="menu-item-price">&#8358;24,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Mushroom duxelles, madeira jus.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Nigerian Fried Rice</span><span class="leader"></span><span class="menu-item-price">&#8358;12,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Grilled chicken, mixed vegetables.</p></div>
+            <!-- Stats Counter -->
+            <div class="stats-grid reveal" id="stats">
+                <div class="stat-item">
+                    <h3 class="stat-number" data-count="12">0</h3>
+                    <p>Award Winning Chefs</p>
                 </div>
-                <div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Efo Riro, Assorted Meat</span><span class="leader"></span><span class="menu-item-price">&#8358;13,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Spinach stew, smoked fish, tripe.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Herb-Crusted Salmon</span><span class="leader"></span><span class="menu-item-price">&#8358;17,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Lemon butter, seasonal greens.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Ofada Rice &amp; Ayamase</span><span class="leader"></span><span class="menu-item-price">&#8358;11,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Green pepper sauce, assorted meat.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Grilled Turkey</span><span class="leader"></span><span class="menu-item-price">&#8358;14,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Pepper glaze, herb rice.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Coconut Curry Prawns</span><span class="leader"></span><span class="menu-item-price">&#8358;15,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Jasmine rice, coriander.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Egusi &amp; Pounded Yam</span><span class="leader"></span><span class="menu-item-price">&#8358;10,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Melon seed stew, assorted meat.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Rack of Ribs</span><span class="leader"></span><span class="menu-item-price">&#8358;17,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Smoky BBQ glaze, slaw.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Vegetable Stir-Fry</span><span class="leader"></span><span class="menu-item-price">&#8358;9,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Tofu, cashew, seasonal vegetables.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Catfish Pepper Stew</span><span class="leader"></span><span class="menu-item-price">&#8358;12,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Smoked catfish, scotch bonnet.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Surf &amp; Turf</span><span class="leader"></span><span class="menu-item-price">&#8358;25,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Steak &amp; tiger prawns, chimichurri.</p></div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-count="45">0</h3>
+                    <p>Signature Dishes</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="menu-panel" id="desserts" role="tabpanel">
-            <div class="menu-columns">
-                <div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Chin Chin Crème Brûlée</span><span class="leader"></span><span class="menu-item-price">&#8358;5,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Chocolate Fondant</span><span class="leader"></span><span class="menu-item-price">&#8358;6,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Vanilla ice cream.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Zobo Sorbet</span><span class="leader"></span><span class="menu-item-price">&#8358;4,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Coconut Panna Cotta</span><span class="leader"></span><span class="menu-item-price">&#8358;5,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Baked New York Cheesecake</span><span class="leader"></span><span class="menu-item-price">&#8358;6,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Puff-Puff Beignets</span><span class="leader"></span><span class="menu-item-price">&#8358;4,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Cinnamon sugar.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Tiramisu</span><span class="leader"></span><span class="menu-item-price">&#8358;6,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Bread &amp; Butter Pudding</span><span class="leader"></span><span class="menu-item-price">&#8358;5,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Mango &amp; Passionfruit Pavlova</span><span class="leader"></span><span class="menu-item-price">&#8358;5,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Sticky Toffee Pudding</span><span class="leader"></span><span class="menu-item-price">&#8358;5,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-count="98">0</h3>
+                    <p>Satisfaction Rating (%)</p>
                 </div>
-                <div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Chocolate Lava Cake</span><span class="leader"></span><span class="menu-item-price">&#8358;6,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Fruit Salad &amp; Sorbet Trio</span><span class="leader"></span><span class="menu-item-price">&#8358;4,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Baklava</span><span class="leader"></span><span class="menu-item-price">&#8358;5,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Pistachio, honey.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Ice Cream Selection</span><span class="leader"></span><span class="menu-item-price">&#8358;4,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Crème Caramel</span><span class="leader"></span><span class="menu-item-price">&#8358;4,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Lemon Tart</span><span class="leader"></span><span class="menu-item-price">&#8358;5,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Red Velvet Cake</span><span class="leader"></span><span class="menu-item-price">&#8358;5,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Banana Fritters</span><span class="leader"></span><span class="menu-item-price">&#8358;4,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Caramel sauce.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Affogato</span><span class="leader"></span><span class="menu-item-price">&#8358;5,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Espresso, vanilla gelato.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Assorted Petit Fours</span><span class="leader"></span><span class="menu-item-price">&#8358;6,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="menu-panel" id="drinks" role="tabpanel">
-            <div class="menu-columns">
-                <div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Dou Signature</span><span class="leader"></span><span class="menu-item-price">&#8358;6,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Gin, hibiscus, lime.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Zobo Mule</span><span class="leader"></span><span class="menu-item-price">&#8358;6,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Vodka, ginger beer, zobo.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Old Fashioned</span><span class="leader"></span><span class="menu-item-price">&#8358;7,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Palm Wine Sour</span><span class="leader"></span><span class="menu-item-price">&#8358;6,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Whiskey Smash</span><span class="leader"></span><span class="menu-item-price">&#8358;7,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Negroni</span><span class="leader"></span><span class="menu-item-price">&#8358;7,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Passionfruit Mojito</span><span class="leader"></span><span class="menu-item-price">&#8358;6,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Espresso Martini</span><span class="leader"></span><span class="menu-item-price">&#8358;7,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Chapman Royale</span><span class="leader"></span><span class="menu-item-price">&#8358;5,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Tequila Sunrise</span><span class="leader"></span><span class="menu-item-price">&#8358;6,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                </div>
-                <div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Piña Colada</span><span class="leader"></span><span class="menu-item-price">&#8358;6,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Ginger &amp; Lemongrass Fizz</span><span class="leader"></span><span class="menu-item-price">&#8358;4,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Non-alcoholic.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Watermelon Cooler</span><span class="leader"></span><span class="menu-item-price">&#8358;4,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Non-alcoholic.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">House Red Wine</span><span class="leader"></span><span class="menu-item-price">&#8358;8,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Glass.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">House White Wine</span><span class="leader"></span><span class="menu-item-price">&#8358;8,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Glass.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Craft Lager</span><span class="leader"></span><span class="menu-item-price">&#8358;4,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Stout</span><span class="leader"></span><span class="menu-item-price">&#8358;4,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Champagne</span><span class="leader"></span><span class="menu-item-price">&#8358;45,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Bottle.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Single Malt Whiskey</span><span class="leader"></span><span class="menu-item-price">&#8358;9,000</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div><p class="menu-item-desc">Shot.</p></div>
-                    <div class="menu-item"><div class="menu-item-top"><span class="menu-item-name">Barista Coffee</span><span class="leader"></span><span class="menu-item-price">&#8358;3,500</span><button class="add-btn" type="button" aria-label="Add to order">Add</button></div></div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-count="15000">0</h3>
+                    <p>Guests Served</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== TESTIMONIALS ===== -->
-    <section id="testimonials" aria-label="Guest testimonials">
-        <div class="section-head reveal">
-            <h2>What Guests Say</h2>
-            <div class="hero-rule"></div>
-            <p>Real words from people who stayed longer than they planned.</p>
-        </div>
-        <div class="testimonial-grid">
-            <div class="testimonial-card reveal">
-                <div class="stars">★★★★★</div>
-                <blockquote>"The best meal I've had in Abuja. The Jollof Risotto is a revelation — smoky, rich, and perfectly balanced."</blockquote>
-                <div class="author">— Chioma O.</div>
-                <div class="title">Lagos / Food Writer</div>
+    <!-- ===== MENU SECTION ===== -->
+    <section id="menu" class="section-padding" style="background: #0a0a0a;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">Curated Offerings</span>
+                <h2 class="section-title">The Seasonal Menu</h2>
             </div>
-            <div class="testimonial-card reveal">
-                <div class="stars">★★★★★</div>
-                <blockquote>"Dou feels like a secret. The lighting, the service, the way the steak is cooked — everything is considered."</blockquote>
-                <div class="author">— Tunde A.</div>
-                <div class="title">Abuja / Architect</div>
-            </div>
-            <div class="testimonial-card reveal">
-                <div class="stars">★★★★★</div>
-                <blockquote>"Finally a lounge that doesn't rush you. The cocktails are proper, the music is low, and the staff actually smile."</blockquote>
-                <div class="author">— Zainab K.</div>
-                <div class="title">Abuja / Designer</div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ===== GALLERY ===== -->
-    <section id="gallery" aria-label="Gallery">
-        <div class="section-head reveal">
-            <h2>The Room</h2>
-            <div class="hero-rule"></div>
-            <p>Velvet seating, low gold light, and tables dressed for the occasion — whatever the occasion turns out to be.</p>
-        </div>
-        <div class="gallery-grid">
-            <figure class="gallery-item span-2 reveal">
-                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=80" alt="The main dining room at Dou Restaurant" loading="lazy" />
-                <figcaption>The Dining Room</figcaption>
-            </figure>
-            <figure class="gallery-item reveal">
-                <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=700&q=80" alt="Gold table setting" loading="lazy" />
-                <figcaption>Table, Set for Two</figcaption>
-            </figure>
-            <figure class="gallery-item reveal">
-                <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=700&q=80" alt="A cocktail being poured over ice" loading="lazy" />
-                <figcaption>The Lounge, After Dark</figcaption>
-            </figure>
-            <figure class="gallery-item span-2 reveal">
-                <img src="https://images.unsplash.com/photo-1694967336926-464982371527?auto=format&fit=crop&w=1000&q=80" alt="A table laid with plates for sharing" loading="lazy" />
-                <figcaption>Built for Sharing</figcaption>
-            </figure>
-        </div>
-    </section>
-
-    <!-- ===== ABOUT ===== -->
-    <section id="about" aria-label="About us">
-        <div class="about">
-            <div class="about-img-wrap reveal">
-                <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80" alt="Gold table setting at Dou Restaurant" loading="lazy" />
+            <div class="menu-controls reveal">
+                <div class="menu-tabs">
+                    <button class="tab active" data-tab="starters">Starters</button>
+                    <button class="tab" data-tab="mains">Main Courses</button>
+                    <button class="tab" data-tab="grill">Grill & Steak</button>
+                    <button class="tab" data-tab="cocktails">Cocktails</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="menuSearch" placeholder="Search dishes or ingredients..." />
+                </div>
             </div>
-            <div class="reveal">
-                <h2>A room built for long dinners.</h2>
-                <p>We opened Dou to hold two kitchens at once — the continental training of our chefs and the flavours we grew up on — without asking either to sit quietly.</p>
-                <p>Low light, warm wood, a lounge that runs late. Come for the steak, stay for the second round.</p>
-                <a href="#reserve" class="btn" style="margin-top:0.8rem;">Reserve a Table</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- ===== NEWSLETTER ===== -->
-    <section id="newsletter" aria-label="Newsletter">
-        <div class="newsletter-wrap reveal">
-            <h2>Stay in the know</h2>
-            <p>New dishes, lounge nights, and last-minute tables — sent sparingly.</p>
-            <form class="newsletter-form" id="newsletterForm" novalidate>
-                <input type="email" placeholder="Your email address" required aria-label="Email address" />
-                <button type="submit" class="btn btn-gold">Subscribe</button>
-            </form>
-            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.8rem;">No spam. Unsubscribe anytime.</p>
+            <!-- Starters Panel -->
+            <div class="menu-panel active" id="starters">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Truffle Beef Carpaccio</span>
+                            <span class="menu-item-price">₦18,500</span>
+                        </div>
+                        <p class="menu-item-desc">Thinly sliced prime beef, truffle oil, aged parmesan shavings, and caper berries.</p>
+                    </div>
+                    <button class="add-btn">Add to Pre-Order</button>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Seared Sea Scallops</span>
+                            <span class="menu-item-price">₦22,000</span>
+                        </div>
+                        <p class="menu-item-desc">Pan-seared jumbo scallops with cauliflower puree, crisp pancetta, and citrus glaze.</p>
+                    </div>
+                    <button class="add-btn">Add to Pre-Order</button>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Artisanal Burrata</span>
+                            <span class="menu-item-price">₦16,000</span>
+                        </div>
+                        <p class="menu-item-desc">Fresh burrata cheese, heirloom tomatoes, basil pesto, and aged balsamic reduction.</p>
+                    </div>
+                    <button class="add-btn">Add to Pre-Order</button>
+                </div>
+            </div>
+
+            <!-- Mains Panel -->
+            <div class="menu-panel" id="mains">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Pan-Roasted Salmon</span>
+                            <span class="menu-item-price">₦32,000</span>
+                        </div>
+                        <p class="menu-item-desc">Atlantic salmon filet, wild mushroom risotto, asparagus, and saffron beurre blanc.</p>
+                    </div>
+                    <button class="add-btn">Add to Pre-Order</button>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Herb-Crusted Lamb Rack</span>
+                            <span class="menu-item-price">₦45,000</span>
+                        </div>
+                        <p class="menu-item-desc">New Zealand lamb, fondant potato, roasted baby carrots, and rosemary jus.</p>
+                    </div>
+                    <button class="add-btn">Add to Pre-Order</button>
+                </div>
+            </div>
+
+            <!-- Grill Panel -->
+            <div class="menu-panel" id="grill">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Prime Ribeye (400g)</span>
+                            <span class="menu-item-price">₦52,000</span>
+                        </div>
+                        <p class="menu-item-desc">Dry-aged Angus ribeye, truffle butter, garlic confit, and red wine reduction.</p>
+                    </div>
+                    <button class="add-btn">Add to Pre-Order</button>
+                </div>
+            </div>
+
+            <!-- Cocktails Panel -->
+            <div class="menu-panel" id="cocktails">
+                <div class="menu-item">
+                    <div>
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Dou Smoked Old Fashioned</span>
+                            <span class="menu-item-price">₦12,000</span>
+                        </div>
+                        <p class="menu-item-desc">Bourbon, aromatic bitters, charred oak smoke, and gold leaf orange peel.</p>
+                    </div>
+                    <button class="add-btn">Add to Pre-Order</button>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer id="contact" role="contentinfo">
-        <div class="footer-grid">
-            <div>
-                <h3>DOU <span>&amp;</span> LOUNGE</h3>
-                <p>Plot 98, Aminu Kano Crescent</p>
-                <p>Wuse 2, Abuja, Nigeria</p>
-            </div>
-            <div class="footer-col">
-                <h4>Reservations</h4>
-                <a href="tel:+2348175756669" class="phone-link">+234 817 575 6669</a>
-                <p style="margin-top:0.8rem;">Walk-ins welcome</p>
-            </div>
-            <div class="footer-col">
-                <h4>Hours</h4>
-                <p>Mon – Thu &nbsp;12:00 PM – 11:30 PM</p>
-                <p>Fri – Sat &nbsp;12:00 PM – 12:00 AM</p>
-                <p>Sun &nbsp;12:00 PM – 10:00 PM</p>
-            </div>
-            <div class="footer-col">
-                <h4>Connect</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="Instagram">📷</a>
-                    <a href="#" aria-label="Twitter">🐦</a>
-                    <a href="#" aria-label="Facebook">📘</a>
-                    <a href="#" aria-label="YouTube">▶️</a>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">DOU<span>.</span></a>
+                    <p>Where fine dining meets high-end lounge culture. An exceptional journey for discerning palates.</p>
                 </div>
-                <p style="margin-top:0.8rem;font-size:0.85rem;">#DouAbuja</p>
+                <div class="footer-col">
+                    <h4>Location & Hours</h4>
+                    <ul>
+                        <li><a href="#">Victoria Island, Lagos, Nigeria</a></li>
+                        <li><a href="#">Mon - Sun: 12:00 PM - 02:00 AM</a></li>
+                        <li><a href="#">Reservations: +234 (0) 800 368 0000</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Subscribe to receive exclusive invitations and seasonal menu updates.</p>
+                    <form id="newsletterForm" style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="Your Email" required style="padding: 0.6rem; background: #111; border: 1px solid var(--border-color); color: #fff; width: 100%; border-radius: 2px;" />
+                        <button type="submit" class="btn btn-gold" style="padding: 0.6rem 1rem;">Join</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; <span id="year"></span> Dou Restaurant &amp; Lounge. All rights reserved.</span>
-            <span>Designed by Praise Tunde &amp; Macdonald Nwanne.</span>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Dou Restaurant & Lounge. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- ===== BACK TO TOP ===== -->
-    <button id="back-top" aria-label="Back to top">↑</button>
+    <!-- Back To Top Button -->
+    <button class="back-top" id="back-top" aria-label="Back to top">&#8593;</button>
 
-    <!-- ===== CART ===== -->
-    <button id="cart-toggle" aria-label="View your order">
-        <span id="cart-count">0</span> Order
+    <!-- ===== CART DRAWER WIDGET ===== -->
+    <button id="cart-toggle" aria-label="View pre-order list">
+        🛒 Order (<span id="cart-count">0</span>)
     </button>
 
-    <aside id="cart-drawer" aria-hidden="true">
-        <div class="cart-head">
-            <h3>Your Order</h3>
-            <button id="cart-close" aria-label="Close order panel">&times;</button>
-        </div>
-        <div id="cart-empty">Nothing selected yet — tap "Add" beside any dish.</div>
-        <ul id="cart-list"></ul>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:0.4rem 0;">
-            <button class="cart-clear" id="cartClear">Clear all</button>
-        </div>
-        <div class="cart-total-row">
-            <span>Total</span>
-            <span id="cart-total">&#8358;0</span>
-        </div>
-        <a id="cart-whatsapp" class="btn btn-gold" href="#" target="_blank" rel="noopener">Send Order on WhatsApp</a>
-    </aside>
     <div id="cart-backdrop"></div>
 
+    <aside id="cart-drawer" aria-label="Pre-order cart">
+        <div class="cart-head">
+            <h3>Your Order</h3>
+            <button id="cart-close" aria-label="Close cart">&times;</button>
+        </div>
+        <div id="cart-empty">Your order list is empty.</div>
+        <ul id="cart-list"></ul>
+        <div id="cart-summary" style="display: none; margin-top: auto;">
+            <button class="cart-clear" id="cart-clear-btn">Clear All</button>
+            <div class="cart-total-row">
+                <span>Total</span>
+                <span id="cart-total">₦0</span>
+            </div>
+            <a href="#reserve" class="btn btn-gold" id="cart-checkout-btn">Proceed to Reservation</a>
+        </div>
+    </aside>
+
     <!-- ===== RESERVATION MODAL ===== -->
-    <div class="modal-overlay" id="reserveModal" role="dialog" aria-modal="true" aria-label="Reservation form">
+    <div class="modal-overlay" id="reserveModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal">
-            <button class="modal-close" id="reserveModalClose" aria-label="Close reservation form">&times;</button>
-            <h2>Reserve a Table</h2>
-            <p>We'll hold your table for 20 minutes past the booking time.</p>
-            <form id="reserveForm" novalidate>
+            <button class="modal-close" id="modalClose" aria-label="Close reservation form">&times;</button>
+            <h2 id="modalTitle">Reserve a Table</h2>
+            <p>Join us at Dou Restaurant & Lounge. For groups larger than 8, please call us directly.</p>
+            <form id="reservationForm" novalidate>
+                <div class="form-group">
+                    <label for="resName">Full Name</label>
+                    <input type="text" id="resName" required placeholder="John Doe" />
+                </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="resName">Full Name</label>
-                        <input type="text" id="resName" required placeholder="e.g. Chidi Okafor" />
+                        <label for="resEmail">Email</label>
+                        <input type="email" id="resEmail" required placeholder="john@example.com" />
                     </div>
                     <div class="form-group">
-                        <label for="resPhone">Phone</label>
-                        <input type="tel" id="resPhone" required placeholder="080 1234 5678" />
+                        <label for="resPhone">Phone Number</label>
+                        <input type="tel" id="resPhone" required placeholder="+234 800 000 0000" />
                     </div>
                 </div>
                 <div class="form-row">
@@ -1783,124 +1086,154 @@
                     </div>
                     <div class="form-group">
                         <label for="resTime">Time</label>
-                        <input type="time" id="resTime" required />
+                        <select id="resTime" required>
+                            <option value="">Select time</option>
+                            <option value="12:00 PM">12:00 PM</option>
+                            <option value="1:00 PM">1:00 PM</option>
+                            <option value="2:00 PM">2:00 PM</option>
+                            <option value="3:00 PM">3:00 PM</option>
+                            <option value="4:00 PM">4:00 PM</option>
+                            <option value="5:00 PM">5:00 PM</option>
+                            <option value="6:00 PM">6:00 PM</option>
+                            <option value="7:00 PM">7:00 PM</option>
+                            <option value="8:00 PM">8:00 PM</option>
+                            <option value="9:00 PM">9:00 PM</option>
+                            <option value="10:00 PM">10:00 PM</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="resGuests">Number of Guests</label>
-                    <select id="resGuests">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8+</option>
+                    <label for="resGuests">Guests</label>
+                    <select id="resGuests" required>
+                        <option value="1">1 Person</option>
+                        <option value="2" selected>2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5">5 People</option>
+                        <option value="6">6 People</option>
+                        <option value="7">7 People</option>
+                        <option value="8">8 People</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="resNotes">Special requests (optional)</label>
-                    <textarea id="resNotes" placeholder="Dietary needs, occasion, seating preference…"></textarea>
+                    <label for="resNotes">Special Requests (Optional)</label>
+                    <textarea id="resNotes" placeholder="Dietary requirements, seating preference, occasion..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-gold" style="width:100%;">Request Reservation</button>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">Confirm Reservation</button>
             </form>
-            <p style="margin-top:0.8rem;font-size:0.8rem;color:var(--muted);text-align:center;">We'll confirm by SMS within 20 minutes.</p>
         </div>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ===== JAVASCRIPT LOGIC ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            // ---- Preloader ----
+            /* --- Preloader --- */
             const preloader = document.getElementById('preloader');
             window.addEventListener('load', () => {
-                preloader.classList.add('hide');
+                if (preloader) preloader.classList.add('hide');
             });
-            // fallback
-            setTimeout(() => preloader.classList.add('hide'), 3000);
+            setTimeout(() => {
+                if (preloader && !preloader.classList.contains('hide')) {
+                    preloader.classList.add('hide');
+                }
+            }, 1500);
 
-            // ---- Year ----
+            /* --- Footer Year --- */
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // ---- Scroll progress ----
-            const progress = document.getElementById('scroll-progress');
-            window.addEventListener('scroll', () => {
-                const scroll = window.scrollY;
-                const height = document.documentElement.scrollHeight - window.innerHeight;
-                progress.style.width = (scroll / height) * 100 + '%';
-            });
-
-            // ---- Header scroll effect ----
+            /* --- Scroll Progress & Sticky Elements --- */
+            const scrollProgress = document.getElementById('scroll-progress');
             const header = document.querySelector('header');
-            window.addEventListener('scroll', () => {
-                header.classList.toggle('scrolled', window.scrollY > 60);
-            });
-
-            // ---- Hamburger ----
-            const hamburger = document.getElementById('hamburger');
-            const mobileNav = document.getElementById('mobileNav');
-            hamburger.addEventListener('click', () => {
-                const open = hamburger.classList.toggle('active');
-                mobileNav.classList.toggle('open');
-                hamburger.setAttribute('aria-expanded', open);
-            });
-            mobileNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    mobileNav.classList.remove('open');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                });
-            });
-
-            // ---- Back to top ----
             const backTop = document.getElementById('back-top');
+
             window.addEventListener('scroll', () => {
-                backTop.classList.toggle('visible', window.scrollY > 500);
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (window.scrollY / totalHeight) * 100;
+                if (scrollProgress) scrollProgress.style.width = `${progress}%`;
+
+                if (window.scrollY > 60) {
+                    header?.classList.add('scrolled');
+                } else {
+                    header?.classList.remove('scrolled');
+                }
+
+                if (window.scrollY > 400) {
+                    backTop?.classList.add('visible');
+                } else {
+                    backTop?.classList.remove('visible');
+                }
             });
-            backTop.addEventListener('click', () => {
+
+            backTop?.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // ---- Reveal on scroll (Intersection Observer) ----
-            const reveals = document.querySelectorAll('.reveal');
+            /* --- Mobile Navigation --- */
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+
+            function toggleMobileNav() {
+                const isOpen = mobileNav.classList.toggle('open');
+                hamburger.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            }
+
+            hamburger?.addEventListener('click', toggleMobileNav);
+            mobileNav?.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileNav.classList.contains('open')) toggleMobileNav();
+                });
+            });
+
+            /* --- Scroll Reveal Animations --- */
+            const revealElements = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-            reveals.forEach(el => observer.observe(el));
+            }, { threshold: 0.1 });
 
-            // ---- Stats counter ----
+            revealElements.forEach(el => observer.observe(el));
+
+            /* --- Counter Statistics --- */
             const stats = document.querySelectorAll('.stat-number');
-            const statObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const target = parseFloat(el.dataset.count);
-                        const isFloat = target % 1 !== 0;
-                        let current = 0;
-                        const increment = target / 50;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                current = target;
-                                clearInterval(timer);
-                            }
-                            el.textContent = isFloat ? current.toFixed(1) : Math.floor(current);
-                        }, 25);
-                        statObserver.unobserve(el);
-                    }
-                });
-            }, { threshold: 0.5 });
-            stats.forEach(el => statObserver.observe(el));
+            let counted = false;
 
-            // ---- Menu tabs ----
+            const statsSection = document.getElementById('stats');
+            if (statsSection) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting && !counted) {
+                        counted = true;
+                        stats.forEach(stat => {
+                            const target = parseFloat(stat.getAttribute('data-count'));
+                            const isDecimal = target % 1 !== 0;
+                            let current = 0;
+                            const increment = target / 60;
+
+                            const updateCount = () => {
+                                current += increment;
+                                if (current < target) {
+                                    stat.textContent = isDecimal ? current.toFixed(1) : Math.ceil(current);
+                                    requestAnimationFrame(updateCount);
+                                } else {
+                                    stat.textContent = target;
+                                }
+                            };
+                            updateCount();
+                        });
+                    }
+                }, { threshold: 0.3 });
+                statsObserver.observe(statsSection);
+            }
+
+            /* --- Menu Tabs & Search --- */
             const tabs = document.querySelectorAll('.tab');
             const panels = document.querySelectorAll('.menu-panel');
+            const searchInput = document.getElementById('menuSearch');
+
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     tabs.forEach(t => {
@@ -1908,255 +1241,225 @@
                         t.setAttribute('aria-selected', 'false');
                     });
                     panels.forEach(p => p.classList.remove('active'));
+
                     tab.classList.add('active');
                     tab.setAttribute('aria-selected', 'true');
-                    document.getElementById(tab.dataset.tab).classList.add('active');
-                });
-            });
+                    const activePanel = document.getElementById(tab.dataset.tab);
+                    activePanel?.classList.add('active');
 
-            // ---- Menu search ----
-            const searchInput = document.getElementById('menuSearch');
-            searchInput.addEventListener('input', () => {
-                const query = searchInput.value.toLowerCase().trim();
-                const allItems = document.querySelectorAll('.menu-item');
-                allItems.forEach(item => {
-                    const name = item.querySelector('.menu-item-name')?.textContent.toLowerCase() || '';
-                    const desc = item.querySelector('.menu-item-desc')?.textContent.toLowerCase() || '';
-                    const match = name.includes(query) || desc.includes(query);
-                    item.style.display = match ? '' : 'none';
-                });
-                // show no-results if none visible in any panel
-                const panels = document.querySelectorAll('.menu-panel.active');
-                panels.forEach(panel => {
-                    const visible = panel.querySelectorAll('.menu-item[style*="display: none"]');
-                    const total = panel.querySelectorAll('.menu-item').length;
-                    let noResults = panel.querySelector('.menu-no-results');
-                    if (visible.length === total && total > 0) {
-                        if (!noResults) {
-                            noResults = document.createElement('p');
-                            noResults.className = 'menu-no-results';
-                            noResults.textContent = 'No dishes match your search.';
-                            panel.appendChild(noResults);
-                        }
-                    } else {
-                        if (noResults) noResults.remove();
+                    if (searchInput.value) {
+                        filterMenu(searchInput.value.toLowerCase());
                     }
                 });
             });
 
-            // ---- Gallery lightbox (simple) ----
-            document.querySelectorAll('.gallery-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const img = item.querySelector('img');
-                    if (!img) return;
-                    const overlay = document.createElement('div');
-                    overlay.style.cssText =
-                        'position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:2rem;';
-                    const clone = img.cloneNode();
-                    clone.style.cssText =
-                        'max-width:90vw;max-height:85vh;object-fit:contain;border:1px solid var(--hair);';
-                    overlay.appendChild(clone);
-                    overlay.addEventListener('click', () => overlay.remove());
-                    document.body.appendChild(overlay);
-                });
-            });
+            function filterMenu(query) {
+                let currentPanel = document.querySelector('.menu-panel.active');
+                if (!currentPanel) return;
 
-            // ---- Reservation Modal ----
-            const reserveModal = document.getElementById('reserveModal');
-            const reserveModalClose = document.getElementById('reserveModalClose');
-            const reserveForm = document.getElementById('reserveForm');
+                let items = currentPanel.querySelectorAll('.menu-item');
+                let foundAny = false;
 
-            function openReserveModal(e) {
-                e.preventDefault();
-                reserveModal.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeReserveModal() {
-                reserveModal.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-
-            document.querySelectorAll('#heroReserveBtn, #mobileReserveBtn, #about .btn, #footer .phone-link, [href="#reserve"]')
-                .forEach(btn => {
-                    if (btn) btn.addEventListener('click', openReserveModal);
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        item.style.display = '';
+                        foundAny = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
                 });
 
-            reserveModalClose.addEventListener('click', closeReserveModal);
-            reserveModal.addEventListener('click', (e) => {
-                if (e.target === reserveModal) closeReserveModal();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && reserveModal.classList.contains('open')) closeReserveModal();
-            });
-
-            // set default date to tomorrow
-            const dateInput = document.getElementById('resDate');
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            dateInput.value = tomorrow.toISOString().split('T')[0];
-
-            reserveForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('resName').value.trim();
-                const phone = document.getElementById('resPhone').value.trim();
-                const date = document.getElementById('resDate').value;
-                const time = document.getElementById('resTime').value;
-                const guests = document.getElementById('resGuests').value;
-                const notes = document.getElementById('resNotes').value.trim();
-
-                if (!name || !phone || !date || !time) {
-                    alert('Please fill in all required fields.');
-                    return;
+                let existingNoResult = currentPanel.querySelector('.menu-no-results');
+                if (!foundAny) {
+                    if (!existingNoResult) {
+                        const noRes = document.createElement('div');
+                        noRes.className = 'menu-no-results';
+                        noRes.textContent = 'No matching dishes found.';
+                        currentPanel.appendChild(noRes);
+                    }
+                } else if (existingNoResult) {
+                    existingNoResult.remove();
                 }
+            }
 
-                const msg =
-                    `Hello Dou Restaurant, I'd like to make a reservation:%0A` +
-                    `Name: ${name}%0APhone: ${phone}%0ADate: ${date}%0ATime: ${time}%0AGuests: ${guests}%0ANotes: ${notes || 'None'}`;
-                window.open('https://wa.me/234817554444?text=' + msg, '_blank');
-                closeReserveModal();
-                reserveForm.reset();
-                dateInput.value = tomorrow.toISOString().split('T')[0];
+            searchInput?.addEventListener('input', (e) => {
+                filterMenu(e.target.value.toLowerCase());
             });
 
-            // ---- Newsletter ----
-            document.getElementById('newsletterForm').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const input = e.target.querySelector('input[type="email"]');
-                if (input.value.trim()) {
-                    alert('Thanks for subscribing! We\'ll keep you posted.');
-                    input.value = '';
-                } else {
-                    alert('Please enter a valid email address.');
-                }
-            });
-
-            // ---- Order cart ----
-            const WHATSAPP_NUMBER = '2348175756669';
-            const cart = {};
-
+            /* --- Pre-Order Cart System --- */
+            let cart = [];
             const cartToggle = document.getElementById('cart-toggle');
             const cartDrawer = document.getElementById('cart-drawer');
             const cartBackdrop = document.getElementById('cart-backdrop');
             const cartClose = document.getElementById('cart-close');
             const cartList = document.getElementById('cart-list');
             const cartEmpty = document.getElementById('cart-empty');
+            const cartSummary = document.getElementById('cart-summary');
             const cartCount = document.getElementById('cart-count');
             const cartTotal = document.getElementById('cart-total');
-            const cartWhatsapp = document.getElementById('cart-whatsapp');
-            const cartClear = document.getElementById('cartClear');
+            const cartClearBtn = document.getElementById('cart-clear-btn');
 
-            function openCart() {
-                cartDrawer.classList.add('open');
-                cartBackdrop.classList.add('open');
-                cartDrawer.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
+            function toggleCart(show) {
+                const isOpen = show !== undefined ? show : !cartDrawer.classList.contains('open');
+                cartDrawer.classList.toggle('open', isOpen);
+                cartBackdrop.classList.toggle('open', isOpen);
             }
 
-            function closeCart() {
-                cartDrawer.classList.remove('open');
-                cartBackdrop.classList.remove('open');
-                cartDrawer.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-            }
-            cartToggle.addEventListener('click', openCart);
-            cartClose.addEventListener('click', closeCart);
-            cartBackdrop.addEventListener('click', closeCart);
+            cartToggle?.addEventListener('click', () => toggleCart(true));
+            cartClose?.addEventListener('click', () => toggleCart(false));
+            cartBackdrop?.addEventListener('click', () => toggleCart(false));
 
-            function formatNaira(n) {
-                return '\u20a6' + n.toLocaleString('en-NG');
+            function parsePrice(priceStr) {
+                return parseInt(priceStr.replace(/[^0-9]/g, ''), 10) || 0;
             }
 
-            function renderCart() {
-                const items = Object.values(cart);
-                const totalItems = items.reduce((sum, i) => sum + i.qty, 0);
-                cartCount.textContent = totalItems;
+            function updateCartUI() {
                 cartList.innerHTML = '';
-                cartEmpty.style.display = items.length ? 'none' : 'block';
-
                 let total = 0;
-                items.forEach(item => {
-                    total += item.price * item.qty;
-                    const li = document.createElement('li');
-                    li.className = 'cart-row';
-                    li.innerHTML =
-                        `<span class="cart-row-name">${item.name}</span>` +
-                        `<div class="qty-controls">` +
-                        `<button data-action="dec" data-key="${item.key}">&minus;</button>` +
-                        `<span>${item.qty}</span>` +
-                        `<button data-action="inc" data-key="${item.key}">+</button>` +
-                        `</div>` +
-                        `<span class="cart-row-price">${formatNaira(item.price * item.qty)}</span>` +
-                        `<button class="cart-row-remove" data-key="${item.key}" aria-label="Remove item">&times;</button>`;
-                    cartList.appendChild(li);
+                let count = 0;
+
+                if (cart.length === 0) {
+                    cartEmpty.style.display = 'block';
+                    cartSummary.style.display = 'none';
+                } else {
+                    cartEmpty.style.display = 'none';
+                    cartSummary.style.display = 'block';
+
+                    cart.forEach((item, index) => {
+                        const itemTotal = item.price * item.qty;
+                        total += itemTotal;
+                        count += item.qty;
+
+                        const li = document.createElement('li');
+                        li.className = 'cart-row';
+                        li.innerHTML = `
+                            <span class="cart-row-name">${item.name}</span>
+                            <span class="cart-row-price">&#8358;${itemTotal.toLocaleString()}</span>
+                            <div class="qty-controls">
+                                <button data-index="${index}" class="btn-dec" aria-label="Decrease quantity">-</button>
+                                <span>${item.qty}</span>
+                                <button data-index="${index}" class="btn-inc" aria-label="Increase quantity">+</button>
+                            </div>
+                            <button data-index="${index}" class="cart-row-remove" aria-label="Remove item">&times;</button>
+                        `;
+                        cartList.appendChild(li);
+                    });
+                }
+
+                cartCount.textContent = count;
+                cartTotal.innerHTML = `&#8358;${total.toLocaleString()}`;
+
+                document.querySelectorAll('.add-btn').forEach(btn => {
+                    const menuItem = btn.closest('.menu-item');
+                    const name = menuItem.querySelector('.menu-item-name').textContent.trim();
+                    const inCart = cart.find(i => i.name === name);
+
+                    if (inCart) {
+                        btn.classList.add('added');
+                        btn.textContent = `Added (${inCart.qty})`;
+                    } else {
+                        btn.classList.remove('added');
+                        btn.textContent = 'Add to Pre-Order';
+                    }
                 });
-
-                cartTotal.textContent = formatNaira(total);
-
-                const message = items.length ?
-                    'Hello Dou Restaurant, I\'d like to order:%0A' +
-                    items.map(i => '- ' + i.name + ' x' + i.qty + ' (' + formatNaira(i.price * i.qty) + ')').join('%0A') +
-                    '%0A%0ATotal: ' + formatNaira(total) :
-                    'Hello Dou Restaurant, I\'d like to place an order.';
-                cartWhatsapp.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + message;
             }
-
-            cartList.addEventListener('click', (e) => {
-                const btn = e.target.closest('button[data-key]');
-                if (!btn) return;
-                const key = btn.dataset.key;
-                if (!cart[key]) return;
-                if (btn.dataset.action === 'inc') cart[key].qty += 1;
-                if (btn.dataset.action === 'dec') {
-                    cart[key].qty -= 1;
-                    if (cart[key].qty <= 0) delete cart[key];
-                }
-                if (btn.classList.contains('cart-row-remove')) {
-                    delete cart[key];
-                }
-                renderCart();
-            });
-
-            cartClear.addEventListener('click', () => {
-                if (Object.keys(cart).length === 0) return;
-                if (confirm('Clear your entire order?')) {
-                    for (const key in cart) delete cart[key];
-                    renderCart();
-                }
-            });
 
             document.querySelectorAll('.add-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const row = btn.closest('.menu-item');
-                    const name = row.querySelector('.menu-item-name').textContent.trim();
-                    const priceText = row.querySelector('.menu-item-price').textContent;
-                    const price = parseInt(priceText.replace(/[^\d]/g, ''), 10);
-                    const key = name;
+                btn.addEventListener('click', (e) => {
+                    const menuItem = e.target.closest('.menu-item');
+                    const name = menuItem.querySelector('.menu-item-name').textContent.trim();
+                    const priceText = menuItem.querySelector('.menu-item-price').textContent;
+                    const price = parsePrice(priceText);
 
-                    if (!cart[key]) {
-                        cart[key] = { key, name, price, qty: 0 };
+                    const existing = cart.find(i => i.name === name);
+                    if (existing) {
+                        existing.qty += 1;
+                    } else {
+                        cart.push({ name, price, qty: 1 });
                     }
-                    cart[key].qty += 1;
-                    renderCart();
-                    openCart();
 
-                    btn.textContent = 'Added';
-                    btn.classList.add('added');
-                    setTimeout(() => {
-                        btn.textContent = 'Add';
-                        btn.classList.remove('added');
-                    }, 800);
+                    updateCartUI();
                 });
             });
 
-            renderCart();
+            cartList?.addEventListener('click', (e) => {
+                const index = e.target.dataset.index;
+                if (index === undefined) return;
 
-            // ---- Close cart with Escape ----
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && cartDrawer.classList.contains('open')) closeCart();
+                if (e.target.classList.contains('btn-inc')) {
+                    cart[index].qty += 1;
+                } else if (e.target.classList.contains('btn-dec')) {
+                    cart[index].qty -= 1;
+                    if (cart[index].qty <= 0) cart.splice(index, 1);
+                } else if (e.target.classList.contains('cart-row-remove')) {
+                    cart.splice(index, 1);
+                }
+                updateCartUI();
+            });
+
+            cartClearBtn?.addEventListener('click', () => {
+                cart = [];
+                updateCartUI();
+            });
+
+            /* --- Reservation Modal System --- */
+            const reserveModal = document.getElementById('reserveModal');
+            const modalClose = document.getElementById('modalClose');
+            const reservationForm = document.getElementById('reservationForm');
+
+            function toggleModal(show) {
+                reserveModal.classList.toggle('open', show);
+                document.body.style.overflow = show ? 'hidden' : '';
+            }
+
+            document.querySelectorAll('a[href="#reserve"], #heroReserveBtn, #mobileReserveBtn, #cart-checkout-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (cartDrawer.classList.contains('open')) toggleCart(false);
+                    toggleModal(true);
+                });
+            });
+
+            modalClose?.addEventListener('click', () => toggleModal(false));
+            reserveModal?.addEventListener('click', (e) => {
+                if (e.target === reserveModal) toggleModal(false);
+            });
+
+            reservationForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('resName').value;
+                const date = document.getElementById('resDate').value;
+                const time = document.getElementById('resTime').value;
+
+                if (!name || !date || !time) {
+                    alert('Please complete all required fields.');
+                    return;
+                }
+
+                let msg = `Thank you, ${name}! Your table reservation request for ${date} at ${time} has been submitted.`;
+                if (cart.length > 0) {
+                    msg += ` We have attached your pre-ordered items (${cart.length} item(s)).`;
+                }
+
+                alert(msg);
+                reservationForm.reset();
+                cart = [];
+                updateCartUI();
+                toggleModal(false);
+            });
+
+            /* --- Newsletter Form --- */
+            const newsletterForm = document.getElementById('newsletterForm');
+            newsletterForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                if (emailInput && emailInput.value) {
+                    alert('Thank you for subscribing to Dou Restaurant & Lounge updates!');
+                    emailInput.value = '';
+                }
             });
         });
     </script>
-
 </body>
 </html>
